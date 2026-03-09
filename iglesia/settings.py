@@ -29,7 +29,6 @@ INSTALLED_APPS = [
     "apps.blog.apps.BlogConfig",
     "apps.ministries.apps.MinistriesConfig",
     "apps.gallery.apps.GalleryConfig",
-    "apps.members.apps.MembersConfig",
 ]
 
 MIDDLEWARE = [

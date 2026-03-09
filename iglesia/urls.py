@@ -11,7 +11,6 @@ urlpatterns = [
     path("blog/", include("apps.blog.urls")),
     path("ministerios/", include("apps.ministries.urls")),
     path("galeria/", include("apps.gallery.urls")),
-    path("miembros/", include("apps.members.urls")),
 ]
 
 if settings.DEBUG:
