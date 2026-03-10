@@ -224,6 +224,22 @@
             const menu = document.querySelector('.mobile-menu');
             menu.classList.toggle('dn');
         });
+
+           document.addEventListener('DOMContentLoaded', function() {
+        const video = document.getElementById('miVideo');
+        const btnPlay = document.getElementById('btnPlay');
+        
+        if (video && btnPlay) {
+            btnPlay.addEventListener('click', function() {
+                video.play();
+                btnPlay.style.display = 'none';
+            });
+            
+            video.addEventListener('ended', function() {
+                btnPlay.style.display = 'flex';
+            });
+        }
+    });
     </script>
 </body>
 </html>

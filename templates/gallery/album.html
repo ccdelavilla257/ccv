@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} - {{ album.name }}{% endblock %}
+
+{% block content %}
+<!-- Hero pequeño -->
+<section class="hero-small bg-near-black white pv5">
+    <div class="tc ph4">
+        <h1 class="f2 f1-ns white mv0">{{ album.name }}</h1>
+        <p class="f5 f4-ns white-80 mt3">{{ album.images.count }} fotos</p>
+    </div>
+</section>
+
+<!-- Main Content -->
+<main class="ph4 ph5-l pv5" style="max-width: 1200px; margin: 0 auto;">
+    
+    <section>
+        <div class="flex flex-wrap">
+            {% for image in images %}
+            <div class="w-100 w-50-m w-33-l ph2 mb3">
+                <a href="{{ image.image.url }}" data-lightbox="album" data-title="{{ image.title }}" class="db">
+                    <img src="{{ image.image.url }}" alt="{{ image.title }}" class="w-100 br2 shadow-3" style="height: 250px; object-fit: cover;">
+                </a>
+            </div>
+            {% empty %}
+            <p class="tc w-100">No hay imágenes en este álbum.</p>
+            {% endfor %}
+        </div>
+    </section>
+    
+    <div class="tc mt4">
+        <a href="{% url 'gallery:index' %}" class="f6 link dim br2 ph4 pv3 dib bg-light-gray near-black">← Volver a álbumes</a>
+    </div>
+</main>
+
+<!-- Lightbox -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+<script>
+    lightbox.option({
+        'resizeDuration': 200,
+        'wrapAround': true,
+        'albumLabel': 'Imagen %1 de %2'
+    });
+</script>
+{% endblock %}

@@ -1,60 +1,92 @@
-<!-- templates/core/home.html -->
 {% extends 'base.html' %}
 {% load static %}
 
 {% block content %}
-<!-- Hero Section -->
+<!-- Hero Section (se mantiene IGUAL) -->
 <section class="hero vh-100 flex items-center justify-center relative">
     <div class="hero-overlay absolute top-0 right-0 bottom-0 left-0"></div>
     <div class="relative z-2 tc ph4">
-        <!-- Quitamos la clase merriweather -->
         <h1 class="f2 f1-l white mv0">Comunidad Cristiana de la Villa</h1>
         <p class="f5 f4-l white-80 mt3 mb4">Viviendo en el poder del evangelio</p>
         <div>
-            <a href="#main" class="f6 link dim br2 ph3 pv2 dib white bg-gold mr3">Conócenos</a>
-            <a href="{% url 'core:contact' %}" class="f6 link dim br2 ph3 pv2 dib white bg-black-70">Contáctanos</a>
+            <a href="{% url 'core:about' %}" class="f6 link dim br2 ph3 pv2 dib white bg-gold mr3" style="font-weight: 700 !important;">Conócenos</a>
+<a href="{% url 'core:contact' %}" class="f6 link dim br2 ph3 pv2 dib mr3" style="background-color: #E0B354; color: #ffffff !important; font-weight: 700 !important;">Contáctanos</a>
         </div>
     </div>
 </section>
 
+<!-- NUEVA SECCIÓN: Video + Bienvenida -->
+<section id="nueva-seccion" class="ph4 ph5-l pv5" style="max-width: 1200px; margin: 0 auto;">
+    <div class="flex flex-wrap items-center">
+        <!-- Columna izquierda: Video (portrait) -->
+       <!-- Columna izquierda: Video (portrait) con botón play centrado -->
+<div class="w-100 w-50-l pr4-l mb4 mb0-l">
+    <div class="aspect-ratio aspect-ratio--3x4 relative">
+        <!-- Video con z-index bajo -->
+        <video id="miVideo" class="aspect-ratio--object br2 shadow-4" playsinline style="z-index: 1;">
+            <source src="{% static 'videos/video-portrait.mp4' %}" type="video/mp4">
+            Tu navegador no soporta video.
+        </video>
+        <!-- Botón Play con z-index alto -->
+        <button id="btnPlay" class="absolute top-0 right-0 bottom-0 left-0 flex items-center justify-center bg-transparent bn pointer" style="z-index: 20;">
+            <div class="bg-gold br-100 flex items-center justify-center shadow-4" style="width: 70px; height: 70px;">
+                <i class="fas fa-play white fa-2x"></i>
+            </div>
+        </button>
+    </div>
+</div>
+        
+        <!-- Columna derecha: Texto de bienvenida -->
+        <div class="w-100 w-50-l pl4-l tc tl-l">
+            <h2 class="f1 f-headline-l gold mv0 lh-solid">Bienvenido<br>a Casa</h2>
+            <div class="mt4">
+                <a href="{% url 'core:about' %}" class="f3 link dim br2 ph4 pv3 dib white bg-gold" style="font-weight: 700 !important; font-weight: bold !important;">Conoce más →</a>
+            </div>
+        </div>
+    </div>
 
-<!-- Main Content -->
-<main id="main" class="ph4 ph5-l pv5" style="max-width: 1200px; margin: 0 auto;">
-    <!-- Church on Sunday -->
-   <section class="tc mb4">
-    <h2 class="merriweather f3 f2-ns">Iglesia el Domingo</h2>
-    <p class="f5 f4-ns measure center lh-copy">Te esperamos todos los domingos a las 10:30 AM y 7:00 PM para celebrar juntos.</p>
+
 </section>
 
+<!-- Main Content -->
+<main class="ph4 ph5-l pv5" style="max-width: 1200px; margin: 0 auto;">
+    
     <!-- Grid de 4 columnas con Tachyons -->
     <section class="cf mb5">
-        <<div class="w-100 w-50-m w-25-l fl ph3 tc mb4">
-            <h3 class="merriweather f3">Soy Nuevo</h3>
+        <!-- Columna 1: Acerca de -->
+        <div class="w-100 w-50-m w-25-l fl ph3 tc mb4">
+            <h3 class="merriweather f3">Acerca de</h3>
             <p class="lh-copy">¿Alguna vez te has sentido fuera de lugar? Aquí perteneces.</p>
-            <a href="#" class="gold link dim">Más información →</a>
+            <a href="{% url 'core:about' %}" class="gold link dim fw6">Más información →</a>
         </div>
-        <<div class="w-100 w-50-m w-25-l fl ph3 tc mb4">
-            <h3 class="merriweather f3">Preguntas</h3>
-            <p class="lh-copy">¿Qué esperar en nuestra iglesia?</p>
-            <a href="#" class="gold link dim">Ver FAQs →</a>
+        
+        <!-- Columna 2: Artículos (Blog) -->
+        <div class="w-100 w-50-m w-25-l fl ph3 tc mb4">
+            <h3 class="merriweather f3">Artículos</h3>
+            <p class="lh-copy">Devocionales, doctrina y reflexiones para tu vida.</p>
+            <a href="{% url 'blog:list' %}" class="gold link dim fw6">Leer blog →</a>
         </div>
-        <<div class="w-100 w-50-m w-25-l fl ph3 tc mb4">
+        
+        <!-- Columna 3: Ministerios -->
+        <div class="w-100 w-50-m w-25-l fl ph3 tc mb4">
             <h3 class="merriweather f3">Ministerios</h3>
             <p class="lh-copy">¿Quieres más durante la semana?</p>
-            <a href="{% url 'ministries:list' %}" class="gold link dim">Ver ministerios →</a>
+            <a href="{% url 'ministries:list' %}" class="gold link dim fw6">Ver ministerios →</a>
         </div>
-        <div class="fl w-100 w-25-l ph3 tc">
+        
+        <!-- Columna 4: Sermones -->
+        <div class="w-100 w-50-m w-25-l fl ph3 tc">
             <h3 class="merriweather f3">Sermones</h3>
             <p class="lh-copy">Predicación y enseñanza</p>
-            <a href="{% url 'sermons:list' %}" class="gold link dim">Escuchar →</a>
+            <a href="{% url 'sermons:list' %}" class="gold link dim fw6">Escuchar →</a>
         </div>
     </section>
 
-    <!-- Get In Touch -->
-    <section class="tc bg-light-gray pa5 br2">
+    <!-- Get In Touch - MODIFICADO: menos padding y botón en negrita -->
+    <section class="tc bg-light-gray pa4 br2">
         <h2 class="merriweather f2 f1-ns">¡Contáctanos!</h2>
         <p class="f4 f3-ns measure center lh-copy mb4">Nos encantaría saber de ti. Escríbenos o visítanos.</p>
-        <a href="{% url 'core:contact' %}" class="f5 link dim br2 ph4 pv3 mb2 dib white bg-gold">Enviar Mensaje</a>
+        <a href="{% url 'core:contact' %}" class="f5 link dim br2 ph4 pv3 mb2 dib white bg-gold" style="font-weight: 700 !important; font-weight: bold !important;">Enviar Mensaje</a>
     </section>
 </main>
 {% endblock %}

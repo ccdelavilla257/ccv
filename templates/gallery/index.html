@@ -15,14 +15,13 @@
 <!-- Main Content -->
 <main class="ph4 ph5-l pv5" style="max-width: 1200px; margin: 0 auto;">
     
-    <!-- Álbumes (opcional) -->
-    {% if albums %}
+    <!-- Álbumes - AHORA ENLAZAN A SU PÁGINA -->
     <section class="mb4">
         <h2 class="merriweather f3 f2-ns mb3">Álbumes</h2>
         <div class="flex flex-wrap">
             {% for album in albums %}
             <div class="w-100 w-50-m w-25-l ph2 mb3">
-                <a href="#" class="db link near-black">
+                <a href="{% url 'gallery:album_detail' album.id %}" class="db link near-black">
                     <div class="bg-light-gray br2 overflow-hidden">
                         <div class="pv4 tc">
                             <i class="fas fa-folder-open fa-3x gold"></i>
@@ -34,26 +33,12 @@
                     </div>
                 </a>
             </div>
-            {% endfor %}
-        </div>
-    </section>
-    {% endif %}
-    
-    <!-- Todas las imágenes -->
-    <section>
-        <h2 class="merriweather f3 f2-ns mb3">Todas las Fotos</h2>
-        <div class="flex flex-wrap">
-            {% for image in images %}
-            <div class="w-100 w-50-m w-33-l ph2 mb3">
-                <a href="{{ image.image.url }}" data-lightbox="gallery" data-title="{{ image.title }}" class="db">
-                    <img src="{{ image.image.url }}" alt="{{ image.title }}" class="w-100 br2 shadow-3" style="height: 250px; object-fit: cover;">
-                </a>
-            </div>
             {% empty %}
-            <p class="tc w-100">No hay imágenes disponibles.</p>
+            <p class="tc w-100">No hay álbumes disponibles.</p>
             {% endfor %}
         </div>
     </section>
+    
 </main>
 
 <!-- Lightbox CSS y JS (opcional pero recomendado) -->

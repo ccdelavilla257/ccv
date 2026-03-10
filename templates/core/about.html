@@ -8,7 +8,7 @@
 <section class="hero-small bg-near-black white pv5">
     <div class="tc ph4">
         <h1 class="f2 f1-ns white mv0">Acerca de Nosotros</h1>
-        <p class="f5 f4-ns white-80 mt3">Conoce nuestra historia, visión y valores</p>
+        <p class="f5 f4-ns white-80 mt3">Conoce nuestra historia, visión y creencias</p>
     </div>
 </section>
 
@@ -43,76 +43,125 @@
         </div>
     </section>
 
-    <!-- Nuestros Pastores -->
+    <!-- NUEVA SECCIÓN: Nuestras Creencias (reemplaza a Valores) -->
     <section class="mb5">
-        <h2 class="merriweather f3 f2-ns tc mb4">Nuestros Pastores</h2>
+        <h2 class="merriweather f3 f2-ns tc mb4">Nuestras Creencias</h2>
+        <div class="bg-white br2 shadow-4 pa5">
+            <ul class="list pl0">
+                <li class="mb4 flex">
+                    <span class="gold f2 mr3">•</span>
+                    <div>
+                        <h3 class="f4 mv0">La Biblia</h3>
+                        <p class="f5 lh-copy mv2 gray">Creemos que la Biblia es la Palabra inspirada de Dios, nuestra guía infalible para la fe y la conducta.</p>
+                    </div>
+                </li>
+                <li class="mb4 flex">
+                    <span class="gold f2 mr3">•</span>
+                    <div>
+                        <h3 class="f4 mv0">La Trinidad</h3>
+                        <p class="f5 lh-copy mv2 gray">Creemos en un solo Dios que existe eternamente en tres personas: Padre, Hijo y Espíritu Santo.</p>
+                    </div>
+                </li>
+                <li class="mb4 flex">
+                    <span class="gold f2 mr3">•</span>
+                    <div>
+                        <h3 class="f4 mv0">La Salvación</h3>
+                        <p class="f5 lh-copy mv2 gray">Creemos que la salvación es por gracia mediante la fe en Jesucristo, no por obras, sino como un regalo de Dios.</p>
+                    </div>
+                </li>
+                <li class="mb4 flex">
+                    <span class="gold f2 mr3">•</span>
+                    <div>
+                        <h3 class="f4 mv0">La Iglesia</h3>
+                        <p class="f5 lh-copy mv2 gray">Creemos en la iglesia como el cuerpo de Cristo, una familia de creyentes llamados a adorar, crecer y servir.</p>
+                    </div>
+                </li>
+                <li class="flex">
+                    <span class="gold f2 mr3">•</span>
+                    <div>
+                        <h3 class="f4 mv0">El Bautismo</h3>
+                        <p class="f5 lh-copy mv2 gray">Creemos en el bautismo por inmersión como una declaración pública de fe y un paso de obediencia.</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Nuestros Pastores (Pastores, Líderes y Diáconos) -->
+<section class="mb5">
+    <h2 class="merriweather f3 f2-ns tc mb4">Nuestro Equipo</h2>
+    
+    <!-- Pastores -->
+    <div class="mb5">
+        <h3 class="merriweather f4 f3-ns gold tc mb4">Pastores</h3>
         <div class="flex flex-wrap justify-center">
             <div class="w-100 w-33-l ph3 tc mb4">
-                <img src="{% static 'images/pastor1.jpg' %}" alt="Pastor Juan Pérez" class="w-50 br-100 shadow-3">
-                <h3 class="f4 mt3 mb1">Pastor Juan Pérez</h3>
-                <p class="gold f6">Pastor Principal</p>
+                <img src="{% static 'images/tomas.jpg' %}" alt="Pastor Juan Pérez" class="w-50 br-100 shadow-3">
+                <h4 class="f5 mt3 mb1">Juan Pérez</h4>
+                <p class="f7 gray mv0">Pastor Principal</p>
             </div>
             <div class="w-100 w-33-l ph3 tc mb4">
-                <img src="{% static 'images/pastor2.jpg' %}" alt="Pastora María García" class="w-50 br-100 shadow-3">
-                <h3 class="f4 mt3 mb1">Pastora María García</h3>
-                <p class="gold f6">Pastora de Familia</p>
+                <img src="{% static 'images/tomas.jpg' %}" alt="Pastora María García" class="w-50 br-100 shadow-3">
+                <h4 class="f5 mt3 mb1">María García</h4>
+                <p class="f7 gray mv0">Pastora de Familia</p>
             </div>
             <div class="w-100 w-33-l ph3 tc mb4">
-                <img src="{% static 'images/pastor3.jpg' %}" alt="Pastor Carlos López" class="w-50 br-100 shadow-3">
-                <h3 class="f4 mt3 mb1">Pastor Carlos López</h3>
-                <p class="gold f6">Pastor de Jóvenes</p>
+                <img src="{% static 'images/tomas.jpg' %}" alt="Pastor Carlos López" class="w-50 br-100 shadow-3">
+                <h4 class="f5 mt3 mb1">Carlos López</h4>
+                <p class="f7 gray mv0">Pastor de Jóvenes</p>
             </div>
         </div>
-    </section>
-
-    <!-- Nuestros Valores -->
-    <section class="mb5">
-        <h2 class="merriweather f3 f2-ns tc mb4">Nuestros Valores</h2>
-        <div class="flex flex-wrap">
-            <div class="w-100 w-50-l ph3 mb4">
-                <div class="flex items-start">
-                    <i class="fas fa-heart gold fa-2x mr3"></i>
-                    <div>
-                        <h3 class="f4">Amor</h3>
-                        <p class="f6 lh-copy">Amamos a Dios sobre todas las cosas y al prójimo como a nosotros mismos.</p>
-                    </div>
-                </div>
+    </div>
+    
+    <!-- Líderes -->
+    <div class="mb5">
+        <h3 class="merriweather f4 f3-ns gold tc mb4">Líderes</h3>
+        <div class="flex flex-wrap justify-center">
+            <div class="w-100 w-33-l ph3 tc mb4">
+                <img src="{% static 'images/tomas.jpg' %}" alt="Ana Martínez" class="w-50 br-100 shadow-3">
+                <h4 class="f5 mt3 mb1">Ana Martínez</h4>
+                <p class="f7 gray mv0">Líder de Alabanza</p>
             </div>
-            <div class="w-100 w-50-l ph3 mb4">
-                <div class="flex items-start">
-                    <i class="fas fa-hand-holding-heart gold fa-2x mr3"></i>
-                    <div>
-                        <h3 class="f4">Servicio</h3>
-                        <p class="f6 lh-copy">Servimos con alegría y generosidad, siguiendo el ejemplo de Jesús.</p>
-                    </div>
-                </div>
+            <div class="w-100 w-33-l ph3 tc mb4">
+                <img src="{% static 'images/tomas.jpg' %}" alt="Pedro Rodríguez" class="w-50 br-100 shadow-3">
+                <h4 class="f5 mt3 mb1">Pedro Rodríguez</h4>
+                <p class="f7 gray mv0">Líder de Jóvenes</p>
             </div>
-            <div class="w-100 w-50-l ph3 mb4">
-                <div class="flex items-start">
-                    <i class="fas fa-users gold fa-2x mr3"></i>
-                    <div>
-                        <h3 class="f4">Comunidad</h3>
-                        <p class="f6 lh-copy">Vivimos en comunidad, apoyándonos y creciendo juntos.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="w-100 w-50-l ph3 mb4">
-                <div class="flex items-start">
-                    <i class="fas fa-bible gold fa-2x mr3"></i>
-                    <div>
-                        <h3 class="f4">Palabra</h3>
-                        <p class="f6 lh-copy">La Biblia es nuestra guía y fundamento para la fe y la conducta.</p>
-                    </div>
-                </div>
+            <div class="w-100 w-33-l ph3 tc mb4">
+                <img src="{% static 'images/tomas.jpg' %}" alt="Laura Sánchez" class="w-50 br-100 shadow-3">
+                <h4 class="f5 mt3 mb1">Laura Sánchez</h4>
+                <p class="f7 gray mv0">Líder de Niños</p>
             </div>
         </div>
-    </section>
+    </div>
+    
+    <!-- Diáconos -->
+    <div class="mb5">
+        <h3 class="merriweather f4 f3-ns gold tc mb4">Diáconos</h3>
+        <div class="flex flex-wrap justify-center">
+            <div class="w-100 w-33-l ph3 tc mb4">
+                <img src="{% static 'images/tomas.jpg' %}" alt="José Fernández" class="w-50 br-100 shadow-3">
+                <h4 class="f5 mt3 mb1">José Fernández</h4>
+                <p class="f7 gray mv0">Diácono</p>
+            </div>
+            <div class="w-100 w-33-l ph3 tc mb4">
+                <img src="{% static 'images/tomas.jpg' %}" alt="Carmen Díaz" class="w-50 br-100 shadow-3">
+                <h4 class="f5 mt3 mb1">Carmen Díaz</h4>
+                <p class="f7 gray mv0">Diácona</p>
+            </div>
+            <div class="w-100 w-33-l ph3 tc mb4">
+                <img src="{% static 'images/tomas.jpg' %}" alt="Roberto Castro" class="w-50 br-100 shadow-3">
+                <h4 class="f5 mt3 mb1">Roberto Castro</h4>
+                <p class="f7 gray mv0">Diácono</p>
+            </div>
+        </div>
+    </div>
+</section>
 
-    <!-- Llamado a la acción -->
-    <section class="tc pa5 bg-gold white br2">
-        <h2 class="merriweather f3 f2-ns">¿Quieres saber más?</h2>
-        <p class="f5 f4-ns measure center lh-copy mb4">Visítanos este domingo o contáctanos para más información.</p>
-        <a href="{% url 'core:contact' %}" class="f5 link dim br2 ph4 pv3 dib white bg-black-70">Contáctanos</a>
-    </section>
+ <section class="tc pa4 br2" style="background-color: #E0B354;">
+    <h2 class="merriweather f2 f1-ns white">¿Quieres saber más?</h2>
+    <p class="f4 f3-ns measure center lh-copy mb4 white-80">Visítanos este domingo o contáctanos para más información.</p>
+    <a href="{% url 'core:contact' %}" class="f5 link dim br2 ph4 pv3 mb2 dib" style="background-color: #ffffff; color: #E0B354 !important; font-weight: 700 !important; border: 2px solid #E0B354;">Contáctanos</a>
+</section>
 </main>
 {% endblock %}
