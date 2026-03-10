@@ -180,43 +180,57 @@
     </main>
 
     <footer class="bg-near-black white pv5">
-        <div class="ph4 ph5-l" style="max-width: 1200px; margin: 0 auto;">
-            <div class="flex flex-wrap">
-                <div class="w-100 w-25-l ph3">
-                    <h4 class="merriweather f5 ttu tracked gold">Comunidad Cristiana</h4>
-                    <p class="f6 white-70 lh-copy">Viviendo en el poder del evangelio</p>
-                </div>
-                <div class="w-100 w-25-l ph3">
-                    <h4 class="merriweather f5 ttu tracked gold">Contacto</h4>
-                    <ul class="list pl0">
-                        <li class="mb2"><i class="fas fa-map-marker-alt gold mr2"></i><span class="f6 white-70">San Antonio 257 e/ Maceo y Máximo Gómez, Guanabacoa, La Habana, Cuba</span></li>
-                        <li class="mb2"><i class="fas fa-phone gold mr2"></i><span class="f6 white-70">+53 59676677</span></li>
-                        <li class="mb2"><i class="fas fa-envelope gold mr2"></i><span class="f6 white-70">c.c.delavilla@gmail.com</span></li>
-                    </ul>
-                </div>
-                <div class="w-100 w-25-l ph3">
-                    <h4 class="merriweather f5 ttu tracked gold">Horarios</h4>
-                    <ul class="list pl0">
-                        <li class="mb2"><span class="f6 white-70"><span class="gold">Domingos:</span> 10:30 y 19:00</span></li>
-                        <li class="mb2"><span class="f6 white-70"><span class="gold">Miércoles:</span> 20:00 (Oración)</span></li>
-                    </ul>
-                </div>
-                <div class="w-100 w-25-l ph3">
-                    <h4 class="merriweather f5 ttu tracked gold">Síguenos</h4>
-                    <div class="flex">
-                        <a href="https://www.facebook.com/comunidadcristianadelavilla" class="white-70 hover-gold mr3"><i class="fab fa-facebook-f fa-lg"></i></a>
-                        <a href="#" class="white-70 hover-gold mr3"><i class="fab fa-instagram fa-lg"></i></a>
-                        <a href="https://www.youtube.com/@ccdelavilla" class="white-70 hover-gold mr3"><i class="fab fa-youtube fa-lg"></i></a>
-                    </div>
-                </div>
+    <div class="ph4 ph5-l" style="max-width: 1200px; margin: 0 auto;">
+        <div class="flex flex-wrap">
+            <div class="w-100 w-25-l ph3">
+                <h4 class="merriweather f5 ttu tracked gold">Comunidad Cristiana</h4>
+                <p class="f6 white-70 lh-copy">Viviendo en el poder del evangelio</p>
             </div>
-            <div class="bt b--white-20 mt5 pt4 tc">
-                <p class="f7 white-40">&copy; {% now "Y" %} Comunidad Cristiana de la Villa. Todos los derechos reservados.</p>
+            <div class="w-100 w-25-l ph3">
+                <h4 class="merriweather f5 ttu tracked gold">Contacto</h4>
+                <ul class="list pl0">
+                    <li class="mb2"><i class="fas fa-map-marker-alt gold mr2"></i><span class="f6 white-70">San Antonio 257 e/ Maceo y Máximo Gómez, Guanabacoa, La Habana, Cuba</span></li>
+                    <li class="mb2"><i class="fas fa-phone gold mr2"></i><span class="f6 white-70">+53 59676677</span></li>
+                    <li class="mb2"><i class="fas fa-envelope gold mr2"></i><span class="f6 white-70">c.c.delavilla@gmail.com</span></li>
+                </ul>
+            </div>
+            
+            <!-- SECCIÓN HORARIOS ACTUALIZADA -->
+            <div class="w-100 w-25-l ph3">
+                <h4 class="merriweather f5 ttu tracked gold">Horarios</h4>
+                <ul class="list pl0">
+                    <li class="mb3">
+                        <span class="gold fw6">Domingo</span><br>
+                        <span class="f6 white-70">Escuela Dominical: 10:00am - 10:50am</span><br>
+                        <span class="f6 white-70">Culto Dominical: 11:00am - 12:00pm</span>
+                    </li>
+                    <li class="mb3">
+                        <span class="gold fw6">Miércoles</span><br>
+                        <span class="f6 white-70">Culto de Oración: 10:00am - 11:00am</span>
+                    </li>
+                    <li class="mb3">
+                        <span class="gold fw6">Sábado</span><br>
+                        <span class="f6 white-70">Escuela Bíblica Niños: 4:00pm - 5:30pm</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="w-100 w-25-l ph3">
+                <h4 class="merriweather f5 ttu tracked gold">Síguenos</h4>
+                <div class="flex">
+                    <a href="https://www.facebook.com/comunidadcristianadelavilla" class="white-70 hover-gold mr3"><i class="fab fa-facebook-f fa-lg"></i></a>
+                    <a href="#" class="white-70 hover-gold mr3"><i class="fab fa-instagram fa-lg"></i></a>
+                    <a href="https://www.youtube.com/@ccdelavilla" class="white-70 hover-gold mr3"><i class="fab fa-youtube fa-lg"></i></a>
+                </div>
             </div>
         </div>
-    </footer>
+        <div class="bt b--white-20 mt5 pt4 tc">
+            <p class="f7 white-40">&copy; {% now "Y" %} Comunidad Cristiana de la Villa. Todos los derechos reservados.</p>
+        </div>
+    </div>
+</footer>
 
-    <script src="{% static 'js/original-scripts.js' %}"></script>
+    
     {% block extra_js %}{% endblock %}
     <script>
         // Menú hamburguesa para móvil

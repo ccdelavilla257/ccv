@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .forms import ContactForm
+from django.core.mail import send_mail
 from .models import ContactMessage
 
 
@@ -23,14 +23,27 @@ def about(request):
 
 def contact(request):
     if request.method == "POST":
-        form = ContactForm(request.POST)
-        if form.is_valid():
-            ContactMessage.objects.create(**form.cleaned_data)
-            messages.success(
-                request, "¡Gracias por contactarnos! Te responderemos a la brevedad."
-            )
-            return redirect("core:contact")
-    else:
-        form = ContactForm()
+        # Guardar en base de datos
+        message = ContactMessage.objects.create(
+            name=request.POST.get("name"),
+            email=request.POST.get("email"),
+            phone=request.POST.get("phone", ""),
+            subject=request.POST.get("subject"),
+            message=request.POST.get("message"),
+        )
 
-    return render(request, "core/contact.html", {"form": form})
+        # Enviar email (se verá en consola con EMAIL_BACKEND)
+        send_mail(
+            f"Mensaje de contacto: {message.subject}",
+            f"Nombre: {message.name}\nEmail: {message.email}\nTeléfono: {message.phone}\n\nMensaje:\n{message.message}",
+            message.email,  # From
+            ["c.c.delavilla@gmail.com"],  # To
+            fail_silently=False,
+        )
+
+        messages.success(
+            request, "¡Mensaje enviado con éxito! Te contactaremos pronto."
+        )
+        return redirect("core:contact")
+
+    return render(request, "core/contact.html")
