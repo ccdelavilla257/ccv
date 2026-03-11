@@ -4,7 +4,7 @@
 {% block title %} - Ministerios{% endblock %}
 
 {% block content %}
-<!-- Hero pequeño -->
+<!-- Hero -->
 <section class="hero-small bg-near-black white pv5">
     <div class="tc ph4">
         <h1 class="f2 f1-ns white mv0">Ministerios</h1>
@@ -12,26 +12,38 @@
     </div>
 </section>
 
-<!-- Main Content -->
 <main class="ph4 ph5-l pv5" style="max-width: 1200px; margin: 0 auto;">
     
+    <!-- INTRO -->
+    <section class="tc mb5">
+        <h2 class="merriweather f3 f2-ns">Nuestros Ministerios</h2>
+        <p class="f5 f4-ns measure center lh-copy">Cada ministerio está diseñado para ayudarte a crecer espiritualmente mientras sirves a otros con tus dones.</p>
+    </section>
+    
+    <!-- GRID DE MINISTERIOS (TARJETAS) -->
     <section class="flex flex-wrap">
         {% for ministry in ministries %}
         <div class="w-100 w-50-m w-33-l ph3 mb4">
-            <div class="bg-white br2 shadow-4 overflow-hidden tc pa4 h-100 flex flex-column">
-                <i class="fas {{ ministry.icon_class }} fa-3x gold mb3"></i>
-                <h3 class="f4 mv2">{{ ministry.name }}</h3>
-                <p class="f6 gold mb2">{{ ministry.leader }}</p>
-                <p class="f6 lh-copy flex-auto">{{ ministry.description|truncatechars:120 }}</p>
-                {% if ministry.meeting_time %}
-                <p class="f7 i mt2"><i class="far fa-clock mr1"></i>{{ ministry.meeting_time }}</p>
-                {% endif %}
-                <a href="#" class="f6 link dim br2 ph4 pv2 mt3 white bg-gold">Más info</a>
-            </div>
+            <a href="{% url 'ministries:detail' ministry.slug %}" class="db link near-black">
+                <div class="bg-white br2 shadow-4 overflow-hidden tc pa4 h-100 flex flex-column">
+                    <i class="fas {{ ministry.icon_class }} fa-3x gold mb3"></i>
+                    <h3 class="f4 mv2">{{ ministry.name }}</h3>
+                    <p class="f6 gold mb2">{{ ministry.leader }}</p>
+                    <p class="f6 lh-copy flex-auto">{{ ministry.description|truncatechars:100 }}</p>
+                    <span class="f7 gold mt3">Ver detalles →</span>
+                </div>
+            </a>
         </div>
         {% empty %}
         <p class="tc w-100">No hay ministerios disponibles.</p>
         {% endfor %}
+    </section>
+    
+    <!-- LLAMADO A LA ACCIÓN -->
+    <section class="tc pa4 bg-gold white br2 mt5">
+        <h2 class="merriweather f3 f2-ns">¿Quieres servir en algún ministerio?</h2>
+        <p class="f5 f4-ns measure center lh-copy mb4">Contáctanos y te guiaremos para que encuentres el lugar donde puedes usar tus dones.</p>
+        <a href="{% url 'core:contact' %}" class="f5 link dim br2 ph4 pv3 dib white" style="background-color: #2d2d2d; color: #ffffff !important; font-weight: 700 !important;">Contáctanos</a>
     </section>
 </main>
 {% endblock %}

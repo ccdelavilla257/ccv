@@ -15,7 +15,23 @@
 <!-- Main Content -->
 <main class="ph4 ph5-l pv5" style="max-width: 1200px; margin: 0 auto;">
     
-    <!-- Álbumes - AHORA ENLAZAN A SU PÁGINA -->
+    <!-- SECCIÓN NUEVA: Fotos Recientes -->
+    {% if recent_images %}
+    <section class="mb5">
+        <h2 class="merriweather f3 f2-ns mb4">Fotos Recientes</h2>
+        <div class="flex flex-wrap">
+            {% for image in recent_images %}
+            <div class="w-50 w-33-m w-25-l ph2 mb3">
+                <a href="{{ image.image.url }}" data-lightbox="recentes" data-title="{{ image.title|default:'Foto reciente' }}" class="db">
+                    <img src="{{ image.image.url }}" alt="{{ image.title }}" class="w-100 br2 shadow-3" style="height: 200px; object-fit: cover;">
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %}
+    
+    <!-- SECCIÓN: Álbumes (existente) -->
     <section class="mb4">
         <h2 class="merriweather f3 f2-ns mb3">Álbumes</h2>
         <div class="flex flex-wrap">
@@ -41,7 +57,7 @@
     
 </main>
 
-<!-- Lightbox CSS y JS (opcional pero recomendado) -->
+<!-- Lightbox CSS y JS -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
 <script>

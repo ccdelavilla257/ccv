@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} - {{ ministry.name }}{% endblock %}
+
+{% block content %}
+<!-- Hero pequeño -->
+<section class="hero-small bg-near-black white pv4">
+    <div class="tc ph4">
+        <h1 class="f3 f2-ns white mv0">{{ ministry.name }}</h1>
+        <p class="f6 f5-ns white-80 mt2">{{ ministry.leader }}</p>
+    </div>
+</section>
+
+<main class="ph4 ph5-l pv5" style="max-width: 900px; margin: 0 auto;">
+    
+    <article class="bg-white br2 shadow-4 overflow-hidden pa4">
+        
+        <div class="flex flex-wrap">
+            {% if ministry.image %}
+            <div class="w-100 w-40-l pr4-l mb4 mb0-l">
+                <img src="{{ ministry.image.url }}" alt="{{ ministry.name }}" class="w-100 br2 shadow-3">
+            </div>
+            <div class="w-100 w-60-l">
+            {% else %}
+            <div class="w-100">
+            {% endif %}
+                
+                <i class="fas {{ ministry.icon_class }} fa-3x gold mb3"></i>
+                
+                <div class="lh-copy f5">
+                    {{ ministry.description|linebreaks }}
+                </div>
+                
+                <hr class="mv4 b--light-gray">
+                
+                <div class="flex flex-wrap">
+                    {% if ministry.meeting_time %}
+                    <div class="w-50 mb3">
+                        <p class="f6 mv0"><span class="gold">🕒 Horario:</span></p>
+                        <p class="f6 mt1">{{ ministry.meeting_time }}</p>
+                    </div>
+                    {% endif %}
+                    
+                    {% if ministry.meeting_location %}
+                    <div class="w-50 mb3">
+                        <p class="f6 mv0"><span class="gold">📍 Lugar:</span></p>
+                        <p class="f6 mt1">{{ ministry.meeting_location }}</p>
+                    </div>
+                    {% endif %}
+                </div>
+                
+                <div class="tc mt5">
+                    <a href="{% url 'ministries:list' %}" class="f6 link dim br2 ph4 pv3 dib bg-light-gray near-black">← Volver a Ministerios</a>
+                </div>
+            </div>
+        </div>
+    </article>
+</main>
+{% endblock %}

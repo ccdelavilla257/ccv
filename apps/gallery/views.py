@@ -5,14 +5,14 @@ from .models import Album, GalleryImage
 def gallery_index(request):
     # Obtener todos los álbumes
     albums = Album.objects.all()
-    # Obtener todas las imágenes
-    images = GalleryImage.objects.all()
+    # Obtener imágenes recientes (últimas 8)
+    recent_images = GalleryImage.objects.order_by("-uploaded_at")[:8]
     # Obtener imágenes destacadas (opcional)
     featured = GalleryImage.objects.filter(is_featured=True)[:12]
 
     context = {
         "albums": albums,
-        "images": images,
+        "recent_images": recent_images,  # NUEVA VARIABLE
         "featured": featured,
     }
     return render(request, "gallery/index.html", context)
