@@ -13,6 +13,35 @@
 
 <!-- Main Content -->
 <main class="ph4 ph5-l pv5" style="max-width: 1200px; margin: 0 auto;">
+
+<!-- Filtro por año y buscador -->
+<div class="mb4 flex flex-wrap items-center justify-between">
+    <!-- Buscador -->
+    <div class="w-100 w-50-l mb3 mb0-l">
+        <form method="GET" action="{% url 'sermons:buscar' %}" class="flex">
+            <input type="text" name="q" placeholder="Buscar por título, predicador o texto bíblico..." 
+                   class="flex-auto pa3 br2 b--light-gray" style="border-top-right-radius: 0; border-bottom-right-radius: 0;">
+            <button type="submit" class="pa3 br2 white bg-gold bn" style="border-top-left-radius: 0; border-bottom-left-radius: 0; font-weight: 700;">
+                <i class="fas fa-search"></i>
+            </button>
+        </form>
+    </div>
+    
+    <!-- Filtro por año -->
+    <div class="w-100 w-50-l pl3-l">
+        <h3 class="f6 gold mb2 ttu tracked">Filtrar por año:</h3>
+        <div class="flex flex-wrap">
+            <a href="{% url 'sermons:list' %}" class="f6 link dim br2 ph3 pv1 mr2 mb2 bg-light-gray near-black">Todos</a>
+            {% for year in years %}
+            <a href="{% url 'sermons:by_year' year.year %}" 
+               class="f6 link dim br2 ph3 pv1 mr2 mb2 
+               {% if year.year == current_year %}bg-gold white{% else %}bg-light-gray near-black{% endif %}">
+                {{ year.year }}
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</div>
     
     <!-- SECCIÓN 1: ÚLTIMO SERMÓN (DESTACADO) -->
     {% if latest_sermon %}

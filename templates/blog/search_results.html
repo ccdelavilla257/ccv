@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} - Búsqueda: {{ query }}{% endblock %}
+
+{% block content %}
+<!-- Hero pequeño -->
+<section class="hero-small bg-near-black white pv5">
+    <div class="tc ph4">
+        <h1 class="f2 f1-ns white mv0">Resultados de búsqueda</h1>
+        <p class="f5 f4-ns white-80 mt3">"{{ query }}"</p>
+    </div>
+</section>
+
+<!-- Main Content -->
+<main class="ph4 ph5-l pv5" style="max-width: 1200px; margin: 0 auto;">
+    
+    <!-- Formulario de búsqueda -->
+    <div class="mb4 tc">
+        <form method="GET" action="{% url 'blog:buscar' %}" class="dib w-100 w-60-l">
+            <div class="flex items-center">
+                <input type="text" name="q" value="{{ query }}" 
+                       placeholder="Buscar artículos..." 
+                       class="flex-auto pa3 br2 b--light-gray" style="border-top-right-radius: 0; border-bottom-right-radius: 0;">
+                <button type="submit" class="pa3 br2 white bg-gold bn" style="border-top-left-radius: 0; border-bottom-left-radius: 0; font-weight: 700;">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+    
+    <!-- Resultados estilo Google -->
+    <section>
+        {% if resultados %}
+            <p class="f6 gray mb4">Aproximadamente {{ total }} resultados ({{ query }})</p>
+            
+            {% for item in resultados %}
+            <div class="mb5 pb4 bb b--light-gray">
+                <h3 class="f3 f2-ns mv0">
+                    <a href="{% url 'blog:detail' item.post.id %}" class="link gold dim">
+                        {{ item.post.title }}
+                    </a>
+                </h3>
+                <p class="f6 green mv1">{{ request.get_host }}{% url 'blog:detail' item.post.id %}</p>
+                
+                <!-- Fragmentos con la palabra resaltada -->
+                {% for fragmento in item.fragmentos %}
+                    <p class="f5 lh-copy mv2">{{ fragmento|safe }}...</p>
+                {% endfor %}
+                
+                <p class="f6 gray mv1">{{ item.post.published_date|date:"d M Y" }} • Por {{ item.post.author.get_full_name|default:item.post.author.username }}</p>
+            </div>
+            {% endfor %}
+            
+        {% elif query %}
+            <p class="tc f4 gray">No se encontraron artículos que coincidan con "{{ query }}".</p>
+            <div class="tc mt4">
+                <a href="{% url 'blog:list' %}" class="f6 link dim br2 ph4 pv3 dib bg-light-gray near-black">← Volver al blog</a>
+            </div>
+        {% else %}
+            <p class="tc f4 gray">Ingresa un término de búsqueda.</p>
+        {% endif %}
+    </section>
+</main>
+{% endblock %}

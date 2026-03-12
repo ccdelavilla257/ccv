@@ -5,5 +5,6 @@ app_name = "blog"
 
 urlpatterns = [
     path("", views.post_list, name="list"),
-    path("<slug:slug>/", views.post_detail, name="detail"),
+    path("buscar/", views.blog_search, name="buscar"),
+    path("<int:pk>/", views.post_detail, name="detail"),  # <-- CAMBIA AQUÍ (slug → pk)
 ]

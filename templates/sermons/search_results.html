@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load sermon_extras %}
+
+{% block title %} - Búsqueda: {{ query }}{% endblock %}
+
+{% block content %}
+<!-- Hero pequeño -->
+<section class="hero-small bg-near-black white pv5">
+    <div class="tc ph4">
+        <h1 class="f2 f1-ns white mv0">Resultados de búsqueda</h1>
+        <p class="f5 f4-ns white-80 mt3">"{{ query }}"</p>
+    </div>
+</section>
+
+<!-- Main Content -->
+<main class="ph4 ph5-l pv5" style="max-width: 1200px; margin: 0 auto;">
+    
+    <!-- Formulario de búsqueda -->
+    <div class="mb4 tc">
+        <form method="GET" action="{% url 'sermons:buscar' %}" class="dib w-100 w-60-l">
+            <div class="flex items-center">
+                <input type="text" name="q" value="{{ query }}" 
+                       placeholder="Buscar sermones..." 
+                       class="flex-auto pa3 br2 b--light-gray" style="border-top-right-radius: 0; border-bottom-right-radius: 0;">
+                <button type="submit" class="pa3 br2 white bg-gold bn" style="border-top-left-radius: 0; border-bottom-left-radius: 0; font-weight: 700;">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+    
+    <!-- Resultados -->
+    <section>
+        {% if resultados %}
+            <p class="f6 gray mb4">Se encontraron {{ total }} sermones.</p>
+            
+            {% for item in resultados %}
+            <div class="mb4 pb4 bb b--light-gray">
+                <h3 class="f4 mv0">
+                    <a href="{% url 'sermons:detail' item.sermon.id %}" class="link gold dim">
+                        {{ item.sermon.title }}
+                    </a>
+                </h3>
+                <p class="f6 gold mv1">{{ item.sermon.speaker }} • {{ item.sermon.date_preached|date:"d M Y" }}</p>
+                {% if item.sermon.bible_text %}
+                    <p class="f6 i mv1">{{ item.sermon.bible_text }}</p>
+                {% endif %}
+                <p class="f6 lh-copy mv2">{{ item.sermon.description|truncatechars:150 }}</p>
+                <div class="flex">
+                    <a href="{% url 'sermons:detail' item.sermon.id %}" class="f6 link dim br2 ph3 pv2 dib white bg-gold mr3">Ver detalles</a>
+                    {% if item.sermon.video_url %}
+                        <a href="{{ item.sermon.video_url }}" target="_blank" 
+   class="f6 link dim br2 ph3 pv2 dib" 
+   style="font-weight: 700 !important; background-color: #2d2d2d; color: white; text-decoration: none;">
+    Ver video
+</a>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+            
+            <div class="tc mt4">
+                <a href="{% url 'sermons:list' %}" class="f6 link dim br2 ph4 pv3 dib bg-light-gray near-black">← Volver a todos los sermones</a>
+            </div>
+            
+        {% elif query %}
+            <p class="tc f4 gray">No se encontraron sermones que coincidan con "{{ query }}".</p>
+            <p class="tc"><a href="{% url 'sermons:list' %}" class="f6 link dim br2 ph4 pv3 dib bg-light-gray near-black">← Volver a todos los sermones</a></p>
+        {% else %}
+            <p class="tc f4 gray">Ingresa un término de búsqueda.</p>
+        {% endif %}
+    </section>
+</main>
+{% endblock %}
