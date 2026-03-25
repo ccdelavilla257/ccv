@@ -81,31 +81,4 @@
         <a href="{% url 'core:contact' %}" class="f5 link dim br2 ph4 pv3 mb2 dib white bg-gold" style="font-weight: 700 !important;">Enviar Mensaje</a>
     </section>
 </main>
-
-<script>
-    // Menú hamburguesa para móvil
-    document.querySelector('.btn-toggle-menu')?.addEventListener('click', function() {
-        const menu = document.querySelector('.mobile-menu');
-        menu.classList.toggle('dn');
-    });
-
-    // Control del video: clic = play/pause
-    document.addEventListener('DOMContentLoaded', function() {
-        const video = document.getElementById('miVideo');
-        
-        if (video) {
-            // Agregar cursor pointer al video
-            video.classList.add('pointer');
-            
-            // Evento de clic: si está reproduciendo, pausa; si está pausado, reproduce
-            video.addEventListener('click', function() {
-                if (video.paused) {
-                    video.play();
-                } else {
-                    video.pause();
-                }
-            });
-        }
-    });
-</script>
 {% endblock %}

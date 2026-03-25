@@ -251,29 +251,19 @@
 </footer>
 
     
-    {% block extra_js %}{% endblock %}
-    <script>
-        // Menú hamburguesa para móvil
-        document.querySelector('.btn-toggle-menu')?.addEventListener('click', function() {
-            const menu = document.querySelector('.mobile-menu');
-            menu.classList.toggle('dn');
-        });
-
-           document.addEventListener('DOMContentLoaded', function() {
-        const video = document.getElementById('miVideo');
-        const btnPlay = document.getElementById('btnPlay');
+  {% block extra_js %}{% endblock %}
+<script>
+    // Menú hamburguesa para móvil
+    document.addEventListener('DOMContentLoaded', function() {
+        const btnToggle = document.querySelector('.btn-toggle-menu');
+        const mobileMenu = document.querySelector('.mobile-menu');
         
-        if (video && btnPlay) {
-            btnPlay.addEventListener('click', function() {
-                video.play();
-                btnPlay.style.display = 'none';
-            });
-            
-            video.addEventListener('ended', function() {
-                btnPlay.style.display = 'flex';
+        if (btnToggle && mobileMenu) {
+            btnToggle.addEventListener('click', function() {
+                mobileMenu.classList.toggle('dn');
             });
         }
     });
-    </script>
+</script>
 </body>
 </html>
